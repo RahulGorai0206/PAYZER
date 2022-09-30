@@ -55,10 +55,13 @@
             app:destination="@id/home2"
             app:popUpTo="@id/login1"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_login4_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signin"
-        android:name="com.example.payzer.signin"
+        android:name="com.example.payzer.SignIn"
         android:label="fragment_signin"
         tools:layout="@layout/fragment_signin" >
         <action
@@ -79,4 +82,9 @@
             android:id="@+id/action_home2_to_main"
             app:destination="@id/main" />
     </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.payzer.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
 </navigation>
