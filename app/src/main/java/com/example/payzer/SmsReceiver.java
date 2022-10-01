@@ -14,12 +14,13 @@ public class SmsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent){
         int mainMsg=0,Debitedmount=0;
-        String lol="",str="";
+        String lol="",str="",msg="";
+        String[] words;
         StringBuilder amount= new StringBuilder();
         if(Telephony.Sms.Intents.SMS_RECEIVED_ACTION.equals(intent.getAction())){
             for(SmsMessage SmaMsg: Telephony.Sms.Intents.getMessagesFromIntent(intent)){
-                String msg=SmaMsg.getMessageBody();
-                String[] words = msg.split(" ");
+                msg=SmaMsg.getMessageBody();
+                words = msg.split(" ");
                 for (String word : words){
                     if(Objects.equals(word, "debited") || Objects.equals(word, "DEBITED") || Objects.equals(word, "sent") || Objects.equals(word, "Debited")){
                         for(String NewWord :words){
@@ -63,7 +64,9 @@ public class SmsReceiver extends BroadcastReceiver {
                 }
             }
         }
-        Debitedmount=Integer.parseInt(str);
-        Log.e("TAG", "Debited Amount "+Debitedmount);
+        if(!str.equals("")){
+            Debitedmount=Integer.parseInt(str);
+            Log.e("TAG", "Debited Amount: "+Debitedmount);
+        }
     }
 }
